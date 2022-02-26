@@ -48,7 +48,7 @@ comparision_chart
 ## Choropleth map
 Color is used to depict how the jail population fluctuates from state to state on a choropleth map. We can use the maps to show information related to geography as well as compare and evaluate data from different locations. The darker the color, the more people are sentenced to state prison.
 
-**Observation:** California has the most individuals imprisoned in the state. Texas and Florida are looking into it. Increased drug use is a link between those.
+**Observation:** California has the most individuals imprisoned in the state. Texas and Florida are looking into it. In my perspective, an increased of drug use is a link between those.
 
 ```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
 map
