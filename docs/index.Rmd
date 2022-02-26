@@ -1,37 +1,55 @@
 ---
-title: 'Assignment 3: Data Visualization'
+title: "Incarceration Analysis"
 author: "Ziliang Huang"
 date: "2/20/2022"
 output: html_document
+
+
 ---
 
-```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide', warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 library(dplyr)
-library(ggplot2)
 library(tidyverse)
 library(plotly)
-knitr::opts_chunk$set(echo = TRUE)
+library(usmap)
 source("../source/analysis.R")
 ```
 
-## Introduction
+## Introduction + Summary
+In this report, I will use **line graph, scatter plot and map** these three types of visualization to expose patterns of inequality using incarceration data collected by the [Vera Institute](https://www.vera.org). From the Incarceration Trends data, it provides county-level data on prison and jail incarceration and related measures over time for the entire United States. 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+The `land_area` information catches my interest as I review the data and documentation to grasp the structure of this data collection, and I wonder whether there is a link between the land area and the jail population. The top five states with the largest land area in the United States are Alaska, Texas, California, Montana, and New Mexico, as represented by `top_five_land_area`. And the `highest_population_state` and `highest_jail_population_state` statistics show that California has the most people and the most people in jail in the United States. Furthermore, `highest_jail_county` reveals that Los Angeles is the county with the highest jail population in California. However, this does not imply that a larger land area will result in a larger jail population, but it does imply that a larger population will have an impact on the jail population. Because a huge land area does not always imply a large population, and because some areas develop more slowly than others. As a consequence, the `highest_jail_ratio` calculated the total jail population over the total population in the United States, revealing that in 2006 Texas, one out of every three individuals was incarcerated.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Trend over time chart
+Line Graph well connecting individual data points of total population in the United States with the total population in jail vary by race and displays quantitative values a time interval from 1970 to 2018, 50 years.
 
-```{r line graph, echo=FALSE}
+**Observation:** As can be seen from the graph, the trends in the number of black and white people in jails are quite similar and consistent until the total population of the United States reaches around 280 million people. After the population surpassed 280 million, white people`s jail populations scarcely increased, while black people's jail populations slowed and began to decline.
+<br>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+library(plotly)
 time_trend_chart
 ```
 
-## Including Plots
+<br>
 
-You can also embed plots, for example:
+## Variable comparison chart
+Scatter plot uses to observe and show the relationships between two numeric variables: total jail population count and jail population count that held for all federal agencies. 
 
-```{r scatter plot, echo=FALSE, warning=FALSE, message=FALSE}
+**Observation:** According to the graph, the number of persons in jail for both black and white people is relatively similar. However, following the federal agencies' 40K count in jail population cutoff, the number of white individuals is substantially more than the number of black people, but both are slowing down. It's shows that the United Stated Judical system are absolutely fair, and the result of the cases will not changes depending on your skin color.
+
+<br>
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
 comparision_chart
 ```
 
-```{r map, echo=FALSE}
+<br>
+
+## Choropleth map
+Color is used to depict how the jail population fluctuates from state to state on a choropleth map. We can use the maps to show information related to geography as well as compare and evaluate data from different locations. The darker the color, the more people are sentenced to state prison.
+
+**Observation:** California has the most individuals imprisoned in the state. Texas and Florida are looking into it. Increased drug use is a link between those.
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
 map
 ```
